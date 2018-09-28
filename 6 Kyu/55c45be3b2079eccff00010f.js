@@ -1,13 +1,13 @@
 /* Your order, please. (6 Kyu) */
 
+// Original submission
 function order(words) {
 	/* if string empty, return empty string
-	   else 
+	   else
 	   split string into array of string elements
 	   search (match) string elements for number using regex
 	   return number, use number to put that string into array element n-1
-	   add returned string element to sentence using array.join(' ')
-	*/
+	   add returned string element to sentence using array.join(' ') */
 	if (words === "") {
 		return "";
 	} else {
@@ -19,4 +19,13 @@ function order(words) {
 		});
 		return (sentence = sentence_array.join(" "));
 	}
+}
+
+// A few months later, I came back smarter:
+function order(words) {
+	let newSentence = [];
+	words.split` `.forEach(word => {
+		newSentence[Number(word.match(/\d/)) - 1] = word;
+	});
+	return newSentence.join` `;
 }
